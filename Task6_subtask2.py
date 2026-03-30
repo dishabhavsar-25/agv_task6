@@ -32,7 +32,6 @@ def fast_eight_point(pts1, pts2, M, refine=True):
     S_f[-1] = 0
     F_rank2 = U_f @ np.diag(S_f) @ Vt_f
     
-    # CRITICAL FIX: Only run the heavy SciPy optimizer if requested
     if refine:
         F_refined_norm = refineF(F_rank2, pts1_norm[:, :2], pts2_norm[:, :2])
     else:
@@ -83,9 +82,7 @@ def fast_ransac(pts1, pts2, M, num_iters=1000, threshold=2.0):
     return final_F, best_inliers
 
 
-# ==============================================================================
 # MAIN PIPELINE
-# ==============================================================================
 def main():
     video_path = 'dataset_video.mp4' 
     cap = cv.VideoCapture(video_path)
@@ -195,8 +192,6 @@ def main():
     print(f"Finished processing {frame_count} frames. Close the windows to exit.")
     cap.release()
     cv.destroyAllWindows()
-    
-    # Keep the final trajectory plot open until the user closes it manually
     plt.ioff()
     plt.show()
 
