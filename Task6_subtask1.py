@@ -396,7 +396,7 @@ F = eight_point(pts1, pts2, M)
 temple_data = np.load('temple_coords.npz')
 pts1_temple = temple_data['pts1']
 pts2_temple = epipolar_correspondences(img1, img2, F, pts1_temple)
-epipolarMatchGUI(img1, img2, F)
+# epipolarMatchGUI(img1, img2, F)
 
 # 4. Load intrinsics and compute Essential Matrix
 intrinsics = np.load('intrinsics.npz')
